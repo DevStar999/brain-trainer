@@ -71,7 +71,8 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:background="@color/red"
-            android:onClick="clickOption"/>
+            android:onClick="clickOption"
+            android:tag="0"/>
 
         <TextView
             android:id="@+id/optionTextView1"
@@ -82,7 +83,8 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:background="@color/purple_200"
-            android:onClick="clickOption"/>
+            android:onClick="clickOption"
+            android:tag="1"/>
 
         <TextView
             android:id="@+id/optionTextView2"
@@ -93,7 +95,8 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:background="@color/dark_blue"
-            android:onClick="clickOption"/>
+            android:onClick="clickOption"
+            android:tag="2"/>
 
         <TextView
             android:id="@+id/optionTextView3"
@@ -104,7 +107,8 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:background="@color/green"
-            android:onClick="clickOption"/>
+            android:onClick="clickOption"
+            android:tag="3"/>
     </GridLayout>
 
     <TextView
@@ -125,7 +129,6 @@
         android:layout_gravity="center"
         android:text="Play Again"
         android:onClick="replayGame"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
