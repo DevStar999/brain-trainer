@@ -4,13 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.TextView;
-
-import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
     // Views
@@ -24,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     private boolean isGameOngoing;
     private long defaultGameDuration;
     private GameNumbers gameNumbers;
+    private Utility utility;
 
     private void initialise() {
         timerTextView = findViewById(R.id.timerTextView);
@@ -34,6 +31,7 @@ public class GameActivity extends AppCompatActivity {
 
         defaultGameDuration = 30*1000;
         gameNumbers = new GameNumbers();
+        utility = new Utility();
     }
 
     private void setGameText() {
@@ -41,36 +39,20 @@ public class GameActivity extends AppCompatActivity {
         gameNumbers.resetAndGenerateData();
 
         // Setting Score Text
-        String scoreTextViewDisplay = gameNumbers.getCorrectAnswers().toString() + "/" +
-                                      gameNumbers.getTotalQuestionsPlayed().toString();
-        Log.i("Info", "scoreTextViewDisplay = " + scoreTextViewDisplay);
-        scoreTextView.setText(scoreTextViewDisplay);
+        scoreTextView.setText(gameNumbers.getCorrectAnswers().toString() + "/" +
+                              gameNumbers.getTotalQuestionsPlayed().toString());
 
         // Setting Question Text
-        String questionTextViewDisplay = gameNumbers.getOperands().get(0) + " + " +
-                                         gameNumbers.getOperands().get(1);
-        Log.i("Info", "questionTextViewDisplay = " + questionTextViewDisplay);
-        questionTextView.setText(questionTextViewDisplay);
+        questionTextView.setText(gameNumbers.getOperands().get(0) + " + " +
+                                 gameNumbers.getOperands().get(1));
 
         // Setting OptionTextViews
-        Log.i("Info", "Inside setGameText(), the ids of optionTextViews are as follows -");
         for (Integer optionNumber=0; optionNumber<4; optionNumber++) {
-            Integer optionResourceId = this.getResources().getIdentifier(
-                    "optionTextView" + optionNumber.toString(),
-                    "id",
-                    this.getPackageName()
-            );
-            Log.i("Info", "optionResourceId" + optionNumber + " = " + optionResourceId);
-
+            Integer optionResourceId = this.getResources().getIdentifier("optionTextView" +
+                    optionNumber.toString(), "id", this.getPackageName());
             TextView optionTextView = findViewById(optionResourceId);
             optionTextView.setText(String.format("%02d", gameNumbers.getOptions().get(optionNumber)));
         }
-    }
-
-    public String convertMilliToTimerDisplay(long milliseconds) {
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds)%60L; // If total minutes go over 60 minutes
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds)%60L; // If total seconds go over 60 seconds
-        return String.format("%01d:%02d", minutes, seconds);
     }
 
     private void resetGame() {
@@ -92,9 +74,8 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(defaultGameDuration, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerTextView.setText(convertMilliToTimerDisplay(millisUntilFinished));
+                timerTextView.setText(utility.convertMilliToTimerDisplay(millisUntilFinished));
             }
-
             @Override
             public void onFinish() {
                 verdictTextView.setText("Game Over");
@@ -108,8 +89,7 @@ public class GameActivity extends AppCompatActivity {
         if (isGameOngoing) {
             if (gameNumbers.checkAnswer(Integer.parseInt(((TextView) view).getText().toString()))) {
                 verdictTextView.setText("Correct!");
-            }
-            else {
+            } else {
                 verdictTextView.setText("Wrong :(");
             }
             setGameText();
@@ -123,13 +103,7 @@ public class GameActivity extends AppCompatActivity {
 
         initialise();
 
-        replayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetGame();
-                playGame();
-            }
-        });
+        replayButton.setOnClickListener(v -> { resetGame(); playGame(); });
 
         playGame();
     }
