@@ -128,7 +128,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Play Again"
-        android:onClick="replayGame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

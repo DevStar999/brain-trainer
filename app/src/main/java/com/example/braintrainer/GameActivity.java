@@ -17,7 +17,6 @@ public class GameActivity extends AppCompatActivity {
     private TextView timerTextView;
     private TextView questionTextView;
     private TextView scoreTextView;
-    private GridLayout optionsGridLayout;
     private TextView verdictTextView;
     private Button replayButton;
 
@@ -30,7 +29,6 @@ public class GameActivity extends AppCompatActivity {
         timerTextView = findViewById(R.id.timerTextView);
         questionTextView = findViewById(R.id.questionTextView);
         scoreTextView = findViewById(R.id.scoreTextView);
-        optionsGridLayout = findViewById(R.id.optionsGridLayout);
         verdictTextView = findViewById(R.id.verdictTextView);
         replayButton = findViewById(R.id.replayButton);
 
@@ -118,17 +116,20 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void replayGame(View view) {
-        resetGame();
-        playGame();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         initialise();
+
+        replayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetGame();
+                playGame();
+            }
+        });
 
         playGame();
     }
