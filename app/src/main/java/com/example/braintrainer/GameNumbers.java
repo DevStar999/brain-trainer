@@ -40,7 +40,7 @@ public class GameNumbers {
         options.add(gameNumbersHelper.getSumOfListElements(operands)); // Adding the correct option at first position for now
         for (int optionNumber=1; optionNumber<=3; optionNumber++) {
             Integer tempOption = random.nextInt(40) + 1;
-            while (tempOption.equals(options.get(0))) {
+            while (!gameNumbersHelper.isUnique(options, tempOption)) {
                 tempOption = random.nextInt(40) + 1;
             }
             options.add(tempOption);
