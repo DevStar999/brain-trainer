@@ -13,10 +13,12 @@ public class GameNumbers {
     private Integer correctAnswers;        // Number of correct answers given by the player
     private List<Integer> operands;    // List to hold the 2 operands for question
     private List<Integer> options;     // List to hold the 4 options for the addition of operands
+    private GameNumbersHelper gameNumbersHelper; // Helper class object
 
     public GameNumbers() {
         operands = new ArrayList<>();
         options = new ArrayList<>();
+        gameNumbersHelper = new GameNumbersHelper();
 
         resetGame();
     }
@@ -35,7 +37,7 @@ public class GameNumbers {
             operands.add(random.nextInt(20) + 1);
         }
 
-        options.add(getCorrectAnswer()); // Adding the correct option at first position for now
+        options.add(gameNumbersHelper.getSumOfListElements(operands)); // Adding the correct option at first position for now
         for (int optionNumber=1; optionNumber<=3; optionNumber++) {
             Integer tempOption = random.nextInt(40) + 1;
             while (tempOption.equals(options.get(0))) {
@@ -46,15 +48,9 @@ public class GameNumbers {
         Collections.shuffle(options); // Shuffling the options
     }
 
-    public Integer getCorrectAnswer() {
-        Integer sum = 0;
-        for (Integer element: operands) { sum += element; }
-        return sum;
-    }
-
     public boolean checkAnswer(Integer variableToBeCheckedWith) {
         totalQuestionsPlayed++;
-        if (variableToBeCheckedWith.equals(getCorrectAnswer())) {
+        if (variableToBeCheckedWith.equals(gameNumbersHelper.getSumOfListElements(operands))) {
             correctAnswers++;
             return true;
         }
