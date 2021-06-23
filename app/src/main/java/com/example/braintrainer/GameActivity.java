@@ -87,12 +87,19 @@ public class GameActivity extends AppCompatActivity {
 
     public void clickOption(View view) {
         if (isGameOngoing) {
-            if (gameNumbers.checkAnswer(Integer.parseInt(((TextView) view).getText().toString()))) {
-                verdictTextView.setText("Correct!");
-            } else {
-                verdictTextView.setText("Wrong :(");
-            }
-            setGameText();
+            final boolean isCorrect =
+                    gameNumbers.checkAnswer(Integer.parseInt(((TextView) view).getText().toString()));
+            new CountDownTimer(500,1) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    verdictTextView.setText((isCorrect) ? "Correct!" : "Wrong :(");
+                }
+                @Override
+                public void onFinish() {
+                    verdictTextView.setText("");
+                    setGameText();
+                }
+            }.start();
         }
     }
 
