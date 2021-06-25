@@ -43,15 +43,26 @@ public class GameActivity extends AppCompatActivity {
                               gameNumbers.getTotalQuestionsPlayed().toString());
 
         // Setting Question Text
-        questionTextView.setText(gameNumbers.getOperands().get(0) + " + " +
-                                 gameNumbers.getOperands().get(1));
+        if (isGameOngoing) {
+            questionTextView.setText(gameNumbers.getOperands().get(0) + " + " +
+                    gameNumbers.getOperands().get(1));
+        }
+        else {
+            questionTextView.setText("Your Score = ");
+        }
+
 
         // Setting OptionTextViews
         for (Integer optionNumber=0; optionNumber<4; optionNumber++) {
             Integer optionResourceId = this.getResources().getIdentifier("optionTextView" +
                     optionNumber.toString(), "id", this.getPackageName());
             TextView optionTextView = findViewById(optionResourceId);
-            optionTextView.setText(String.format("%02d", gameNumbers.getOptions().get(optionNumber)));
+            if (isGameOngoing) {
+                optionTextView.setText(String.format("%02d", gameNumbers.getOptions().get(optionNumber)));
+            }
+            else {
+                optionTextView.setText("");
+            }
         }
     }
 
@@ -81,6 +92,7 @@ public class GameActivity extends AppCompatActivity {
                 verdictTextView.setText("Game Over");
                 replayButton.setVisibility(View.VISIBLE);
                 isGameOngoing = false;
+                setGameText();
             }
         }.start();
     }
