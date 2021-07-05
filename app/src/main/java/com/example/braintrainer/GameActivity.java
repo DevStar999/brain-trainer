@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
         verdictTextView = findViewById(R.id.verdictTextView);
         replayButton = findViewById(R.id.replayButton);
 
-        defaultGameDuration = 30*1000;
+        defaultGameDuration = 30*1000; // 30 seconds
         gameNumbers = new GameNumbers();
         utility = new Utility();
     }
