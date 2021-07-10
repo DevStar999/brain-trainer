@@ -9,14 +9,14 @@
     android:padding="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/gameInfoLinearLayout"
+        android:id="@+id/game_info_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
         <TextView
-            android:id="@+id/timerTextView"
+            android:id="@+id/timer_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="30s"
@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/questionTextView"
+            android:id="@+id/question_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
@@ -39,7 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/scoreTextView"
+            android:id="@+id/score_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0/0"
@@ -52,18 +52,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
-        android:id="@+id/optionsGridLayout"
+        android:id="@+id/options_grid_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:rowCount="2"
         android:columnCount="2"
-        app:layout_constraintTop_toBottomOf="@+id/gameInfoLinearLayout"
-        app:layout_constraintBottom_toTopOf="@+id/verdictTextView"
+        app:layout_constraintTop_toBottomOf="@+id/game_info_linear_layout"
+        app:layout_constraintBottom_toTopOf="@+id/verdict_text_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_weight="1">
         <TextView
-            android:id="@+id/optionTextView0"
+            android:id="@+id/option_text_view_0"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -75,7 +75,7 @@
             android:tag="0"/>
 
         <TextView
-            android:id="@+id/optionTextView1"
+            android:id="@+id/option_text_view_1"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -87,7 +87,7 @@
             android:tag="1"/>
 
         <TextView
-            android:id="@+id/optionTextView2"
+            android:id="@+id/option_text_view_2"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -99,7 +99,7 @@
             android:tag="2"/>
 
         <TextView
-            android:id="@+id/optionTextView3"
+            android:id="@+id/option_text_view_3"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -112,18 +112,18 @@
     </GridLayout>
 
     <TextView
-        android:id="@+id/verdictTextView"
+        android:id="@+id/verdict_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="45sp"
-        app:layout_constraintTop_toBottomOf="@+id/optionsGridLayout"
-        app:layout_constraintBottom_toTopOf="@+id/replayButton"
+        app:layout_constraintTop_toBottomOf="@+id/options_grid_layout"
+        app:layout_constraintBottom_toTopOf="@+id/replay_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/replayButton"
+        android:id="@+id/replay_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

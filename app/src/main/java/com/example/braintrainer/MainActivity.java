@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView infoContentTextView;
 
     private void initialise() {
-        infoContentTextView = findViewById(R.id.infoContentTextView);
+        infoContentTextView = findViewById(R.id.info_content_text_view);
 
         String textOfContentTextView =  "Solve as many questions as you\n" +
                                         "can by choosing the answer of\n"+

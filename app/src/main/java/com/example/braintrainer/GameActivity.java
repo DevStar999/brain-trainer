@@ -23,11 +23,11 @@ public class GameActivity extends AppCompatActivity {
     private Utility utility;
 
     private void initialise() {
-        timerTextView = findViewById(R.id.timerTextView);
-        questionTextView = findViewById(R.id.questionTextView);
-        scoreTextView = findViewById(R.id.scoreTextView);
-        verdictTextView = findViewById(R.id.verdictTextView);
-        replayButton = findViewById(R.id.replayButton);
+        timerTextView = findViewById(R.id.timer_text_view);
+        questionTextView = findViewById(R.id.question_text_view);
+        scoreTextView = findViewById(R.id.score_text_view);
+        verdictTextView = findViewById(R.id.verdict_text_view);
+        replayButton = findViewById(R.id.replay_button);
 
         defaultGameDuration = 30*1000; // 30 seconds
         gameNumbers = new GameNumbers();
@@ -54,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
 
         // Setting OptionTextViews
         for (Integer optionNumber=0; optionNumber<4; optionNumber++) {
-            Integer optionResourceId = this.getResources().getIdentifier("optionTextView" +
+            Integer optionResourceId = this.getResources().getIdentifier("option_text_view_" +
                     optionNumber.toString(), "id", this.getPackageName());
             TextView optionTextView = findViewById(optionResourceId);
             if (isGameOngoing) {
