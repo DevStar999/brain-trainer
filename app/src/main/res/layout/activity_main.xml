@@ -9,13 +9,14 @@
 
     <LinearLayout
         android:id="@+id/center_info_linear_layout"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/info_title_text_view"
             android:layout_width="wrap_content"
@@ -23,8 +24,8 @@
             android:layout_gravity="center"
             android:text="About Game :"
             android:textAlignment="center"
-            android:textSize="30sp"
             android:textColor="@color/black"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -34,8 +35,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/start_button"
@@ -43,9 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="Let's Play!"
-            android:onClick="startGame" />
+            android:onClick="startGame"
+            android:text="Let's Play!" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

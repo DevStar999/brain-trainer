@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
         verdictTextView = findViewById(R.id.verdict_text_view);
         replayButton = findViewById(R.id.replay_button);
 
-        defaultGameDuration = 30*1000; // 30 seconds
+        defaultGameDuration = 30 * 1000; // 30 seconds
         gameNumbers = new GameNumbers();
         utility = new Utility();
     }
@@ -40,27 +40,25 @@ public class GameActivity extends AppCompatActivity {
 
         // Setting Score Text
         scoreTextView.setText(gameNumbers.getCorrectAnswers().toString() + "/" +
-                              gameNumbers.getTotalQuestionsPlayed().toString());
+                gameNumbers.getTotalQuestionsPlayed().toString());
 
         // Setting Question Text
         if (isGameOngoing) {
             questionTextView.setText(gameNumbers.getOperands().get(0) + " + " +
                     gameNumbers.getOperands().get(1));
-        }
-        else {
+        } else {
             questionTextView.setText("Your Score = ");
         }
 
 
         // Setting OptionTextViews
-        for (Integer optionNumber=0; optionNumber<4; optionNumber++) {
+        for (Integer optionNumber = 0; optionNumber < 4; optionNumber++) {
             Integer optionResourceId = this.getResources().getIdentifier("option_text_view_" +
                     optionNumber.toString(), "id", this.getPackageName());
             TextView optionTextView = findViewById(optionResourceId);
             if (isGameOngoing) {
                 optionTextView.setText(String.format("%02d", gameNumbers.getOptions().get(optionNumber)));
-            }
-            else {
+            } else {
                 optionTextView.setText("");
             }
         }
@@ -87,6 +85,7 @@ public class GameActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timerTextView.setText(utility.convertMilliToTimerDisplay(millisUntilFinished));
             }
+
             @Override
             public void onFinish() {
                 verdictTextView.setText("Game Over");
@@ -101,11 +100,12 @@ public class GameActivity extends AppCompatActivity {
         if (isGameOngoing) {
             final boolean isCorrect =
                     gameNumbers.checkAnswer(Integer.parseInt(((TextView) view).getText().toString()));
-            new CountDownTimer(500,1) {
+            new CountDownTimer(500, 1) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     verdictTextView.setText((isCorrect) ? "Correct!" : "Wrong :(");
                 }
+
                 @Override
                 public void onFinish() {
                     verdictTextView.setText("");
@@ -122,7 +122,10 @@ public class GameActivity extends AppCompatActivity {
 
         initialise();
 
-        replayButton.setOnClickListener(v -> { resetGame(); playGame(); });
+        replayButton.setOnClickListener(v -> {
+            resetGame();
+            playGame();
+        });
 
         playGame();
     }

@@ -5,110 +5,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".GameActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/game_info_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/timer_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30s"
             android:background="@color/orange"
-            android:textSize="25sp"
             android:padding="10dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="30s"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/question_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
             android:padding="10dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/score_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0/0"
             android:background="@color/light_blue"
-            android:textSize="25sp"
             android:padding="10dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="0/0"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridLayout
         android:id="@+id/options_grid_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="2"
         android:columnCount="2"
-        app:layout_constraintTop_toBottomOf="@+id/game_info_linear_layout"
+        android:rowCount="2"
         app:layout_constraintBottom_toTopOf="@+id/verdict_text_view"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_info_linear_layout"
         app:layout_constraintVertical_weight="1">
+
         <TextView
             android:id="@+id/option_text_view_0"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:textSize="85sp"
-            android:textColor="@color/black"
-            android:gravity="center"
             android:background="@color/red"
+            android:gravity="center"
             android:onClick="clickOption"
-            android:tag="0"/>
+            android:tag="0"
+            android:textColor="@color/black"
+            android:textSize="85sp" />
 
         <TextView
             android:id="@+id/option_text_view_1"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:textSize="85sp"
-            android:textColor="@color/black"
-            android:gravity="center"
             android:background="@color/purple_200"
+            android:gravity="center"
             android:onClick="clickOption"
-            android:tag="1"/>
+            android:tag="1"
+            android:textColor="@color/black"
+            android:textSize="85sp" />
 
         <TextView
             android:id="@+id/option_text_view_2"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:textSize="85sp"
-            android:textColor="@color/black"
-            android:gravity="center"
             android:background="@color/dark_blue"
+            android:gravity="center"
             android:onClick="clickOption"
-            android:tag="2"/>
+            android:tag="2"
+            android:textColor="@color/black"
+            android:textSize="85sp" />
 
         <TextView
             android:id="@+id/option_text_view_3"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:textSize="85sp"
-            android:textColor="@color/black"
-            android:gravity="center"
             android:background="@color/green"
+            android:gravity="center"
             android:onClick="clickOption"
-            android:tag="3"/>
+            android:tag="3"
+            android:textColor="@color/black"
+            android:textSize="85sp" />
     </GridLayout>
 
     <TextView
@@ -117,10 +119,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="45sp"
-        app:layout_constraintTop_toBottomOf="@+id/options_grid_layout"
         app:layout_constraintBottom_toTopOf="@+id/replay_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/options_grid_layout" />
 
     <Button
         android:id="@+id/replay_button"
@@ -129,7 +131,7 @@
         android:layout_gravity="center"
         android:text="Play Again"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
